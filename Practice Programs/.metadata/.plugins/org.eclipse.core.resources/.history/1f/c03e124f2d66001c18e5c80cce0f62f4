@@ -1,0 +1,74 @@
+package demo_hib.hibernate_project;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+/**
+ * Hello world!
+ *
+ */
+public class App {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		// Configuration object is created to configure the cfg.xml file and add the
+		// annotated class to the object
+		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class);
+
+		// Create session factory
+		SessionFactory sf = config.buildSessionFactory();
+
+		// Create session
+		Session s = sf.getCurrentSession();
+
+		try {
+
+			// Student object is created
+			System.out.println("Creating the student object...");
+//			Student s1 = new Student("Ayush", "ayush@gmail.com", 666597238l);
+			
+			// Creating Multiple student
+			Scanner sc = new Scanner(System.in);
+			System.out.print("Enter the number of students you want to add : ");
+			int n = sc.nextInt();
+			Student[] studarr = new Student[n];
+			studarr[n] = new Student();
+
+			try {
+				for (int i = 0; i < n; i++) {
+					System.out.print("Enter the name of the student : ");
+					String name = sc.nextLine();
+					System.out.print("Enter the email id of the student : ");
+					String email = sc.nextLine();
+//				email = sc.nextLine();
+					System.out.print("Enter the phone number of the student : ");
+					long phoneNo = sc.nextLong();
+				}
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+			// start transaction
+			System.out.println("Transaction is started...");
+			s.beginTransaction();
+
+			// save the student
+			System.out.println("Saving the student...");
+			s.save(studarr);
+
+			// commit the transaction
+			s.getTransaction().commit();
+			System.out.println("Done!");
+
+		} finally {
+			sf.close();
+		}
+
+	}
+}

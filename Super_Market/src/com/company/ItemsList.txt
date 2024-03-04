@@ -1,0 +1,12 @@
+
+Item Name: Wheat, Item Quantity: 20 kg, Item Entry Date(yyyy-mm-dd): 2022-03-22
+
+Item Name: Lays, Item Quantity: 30 pkts, Item Entry Date(yyyy-mm-dd): 2022-03-22
+
+Item Name: Potatoes, Item Quantity: 10 kg, Item Entry Date(yyyy-mm-dd): 2022-03-22
+
+Item Name: Tomatoes, Item Quantity: 20 kg, Item Entry Date(yyyy-mm-dd): 2022-03-22
+
+Item Name: Olive Oil, Item Quantity: 5 litre, Item Entry Date(yyyy-mm-dd): 2022-03-22
+
+Item Name: White Bread, Item Quantity: 10 pkts, Item Entry Date(yyyy-mm-dd): 2022-03-22

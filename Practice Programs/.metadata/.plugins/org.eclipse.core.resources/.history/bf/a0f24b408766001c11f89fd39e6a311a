@@ -1,0 +1,10 @@
+package demo_hib.hibernate_project;
+
+public class App_Query_Objects {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,83 @@
+package demo_hib.hibernate_project;
+
+import java.util.Scanner;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+
+public class App_Read_Student_ {
+	public static void main(String[] args) {
+
+		/* Configuration object is created to configure the cfg.xml file and add the
+		annotated class to the object */
+		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class);
+
+		// Create session factory
+		SessionFactory sf = config.buildSessionFactory();
+
+		// Create session
+		Session s = sf.getCurrentSession();
+
+		try {
+
+			// Student object is created
+			System.out.println("Creating the student object...");
+			Student s1 = new Student("Ayush", "ayush@gmail.com", 666597238l);
+
+			// Creating Multiple student
+			/*
+			 * Scanner sc = new Scanner(System.in);
+			 * System.out.print("Enter the number of students you want to add : "); int n =
+			 * sc.nextInt(); Student[] studarr = new Student[n];
+			 * 
+			 * try { for (int i = 0; i < n; i++) { studarr[i] = new Student();
+			 * System.out.println("\n\nEnter Details of Student " + (i + 1));
+			 * System.out.println("<**************************************************>");
+			 * System.out.print("Enter the name of the student : ");
+			 * studarr[i].setName(sc.nextLine()); studarr[i].setName(sc.nextLine());
+			 * System.out.print("Enter the email id of the student : ");
+			 * studarr[i].setEmailId(sc.nextLine());
+			 * System.out.print("Enter the phone number of the student : "); // long phoneNo
+			 * = sc.nextLong(); studarr[i].setPhoneNo(sc.nextLong());
+			 * System.out.println("<**************************************************>"); }
+			 * } catch (Exception ex) { ex.printStackTrace(); }
+			 */
+			
+			// start transaction
+			System.out.println("Transaction is started...");
+			s.beginTransaction();
+
+			// save the student
+			s.save(s1);
+			// save the multiple student
+			/*
+			 * for (int i = 0; i < n; i++) { System.out.println("Saving the student " + (i +
+			 * 1)); s.save(studarr[i]); }
+			 */
+
+			// commit the transaction
+			s.getTransaction().commit();					
+			
+			// My New Code
+			
+			// find out the student's id: primary key
+			System.out.println("Saved student. Generated id: " + s1.getId());
+			
+			// now get a new session and start transaction
+			s = sf.getCurrentSession();
+			s.beginTransaction();
+			
+			// retrieve student based on the id: primary key
+			Student myStudent = s.get(Student.class, s1.getId());
+			System.out.println("Get Completed: "+ myStudent);
+			//commit the transaction
+			s.getTransaction().commit();	
+			
+			System.out.println("Done!");
+
+		} finally {
+			sf.close();
+		}
+	}
+}
