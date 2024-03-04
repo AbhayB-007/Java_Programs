@@ -1,0 +1,6 @@
+
+Item Name: White Bread, Item Quantity: 20 pkts, Item Entry Date(yyyy-mm-dd): 2022-04-07
+
+Item Name: Rice, Item Quantity: 10 kg, Item Entry Date(yyyy-mm-dd): 2022-04-07
+
+Item Name: Potatoes, Item Quantity: 10 kg, Item Entry Date(yyyy-mm-dd): 2022-04-07
